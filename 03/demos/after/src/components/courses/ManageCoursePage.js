@@ -28,9 +28,16 @@ function ManageCoursePage({
     }
   }, []);
 
+  function handleChange(event) {
+    const {name ,  value} = event.target;
+    setCourse( prevCourse =>({
+      [name] : name === "authorId" ? parent(value,10) : value
+    })); 
+  }
+
   return (
     <div>
-      <CourseForm course={course} errors={errors} authors={authors} />
+      <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} />
     </div>
   );
 }
